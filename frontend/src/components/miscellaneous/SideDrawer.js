@@ -29,7 +29,7 @@ import ProfileModal from "./ProfileModal";
 import NotificationBadge from "react-notification-badge";
 import { Effect } from "react-notification-badge";
 import { getSender } from "../../config/ChatLogics";
-import UserListItem from "../userAvatar/UserListItem";
+// import { UserListItem } from "../userAvatar/UserListItem";
 import { ChatState } from "../../Context/ChatProvider";
 
 function SideDrawer() {
@@ -207,12 +207,41 @@ function SideDrawer() {
             {loading ? (
               <ChatLoading />
             ) : (
-              searchResult.map((dhruv) => (
-                <UserListItem
-                  key={dhruv._id}
-                  user={dhruv}
-                  handleFunction={() => accessChat(dhruv._id)}
-                />
+              searchResult.map((user) => (
+                <Box
+                  user={user}
+                  key={user._id}
+                  onClick={() => accessChat(user._id)}
+                  cursor="pointer"
+                  bg="#E8E8E8"
+                  _hover={{
+                    background: "#38B2AC",
+                    color: "black",
+                  }}
+                  w="100%"
+                  d="flex"
+                  alignItems="center"
+                  color="black"
+                  px={3}
+                  py={2}
+                  mb={2}
+                  borderRadius="lg"
+                >
+                  <Avatar
+                    mr={2}
+                    size="sm"
+                    cursor="pointer"
+                    name={user.name}
+                    src={user.pic}
+                  />
+                  <Box>
+                    <Text>{user.name}</Text>
+                    <Text fontSize="xs">
+                      <b>Email : </b>
+                      {user.email}
+                    </Text>
+                  </Box>
+                </Box>
               ))
             )}
             {loadingChat && <Spinner ml="auto" d="flex" />}
