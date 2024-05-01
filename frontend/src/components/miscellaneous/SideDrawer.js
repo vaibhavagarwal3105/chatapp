@@ -2,6 +2,9 @@ import { Button } from "@chakra-ui/button";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { Input } from "@chakra-ui/input";
 import { Box, Text } from "@chakra-ui/layout";
+
+
+
 import {
   Menu,
   MenuButton,
@@ -141,11 +144,31 @@ function SideDrawer() {
             </Text>
           </Button>
         </Tooltip>
-        <Text fontSize="2xl" fontFamily="Work sans">
-          Converse
+        <Text fontSize="3xl" fontFamily="Work sans">
+          Converse 
         </Text>
+        
+        <Button  style= {{position: 'absolute',right: '8rem' }} className="mr" variant="ghost">
+        
+          {/* <i class="fa-solid fa-brain"></i> */}
+          <a href="/chatAi">
+            <Text d={{ base: "none", md: "flex" }} px={4}>
+              Converse
+            </Text>
+            <Text fontSize="1xl" fontFamily="Work sans">
+          AI 
+        </Text>
+          </a>
+
+
+          </Button>
+         
+
+      
         <div>
+          
           <Menu>
+
             <MenuButton p={1}>
               <NotificationBadge
                 count={notification.length}
